@@ -3,13 +3,8 @@ import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
-  // React.component already has it's own constructor. With super(props) we're making sure that the parenting constructor still gets called.
-  constructor(props) {
-    super(props);
-    // defaulting to null because we don't know the latitude value yet; this is the only time to directly assign to this.state
-    this.state = { lat: null, errorMessage: '' };
-  }
-
+  // directly assigning state will use babel to define a constructor
+  state = { lat: null, errorMessage: '' };
   //the react documentation states componentDidMount() as the best place to load data
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
